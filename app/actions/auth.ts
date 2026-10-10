@@ -31,7 +31,7 @@ export async function registerAction(_: FormState, fd: FormData): Promise<FormSt
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("Register action error:", msg);
-    return { error: "Unable to create account. Please verify database connection." };
+    return { error: `Database error: ${msg.slice(0, 150)}` };
   }
 
   redirect("/dashboard");
@@ -57,7 +57,7 @@ export async function loginAction(_: FormState, fd: FormData): Promise<FormState
     return {
       error: msg.includes("AUTH_SECRET")
         ? "Server error: AUTH_SECRET missing in environment variables."
-        : "Database connection error. Please verify Vercel environment variables."
+        : `Database error: ${msg.slice(0, 150)}`
     };
   }
 
