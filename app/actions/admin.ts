@@ -159,6 +159,9 @@ export async function approvePaymentAction(fd: FormData) {
     });
   });
   revalidatePath("/admin/payments");
+  revalidatePath("/add-funds");
+  revalidatePath("/dashboard");
+  revalidatePath("/", "layout");
 }
 
 export async function rejectPaymentAction(fd: FormData) {
@@ -168,6 +171,8 @@ export async function rejectPaymentAction(fd: FormData) {
     data: { status: "REJECTED", reviewedAt: new Date() },
   });
   revalidatePath("/admin/payments");
+  revalidatePath("/add-funds");
+  revalidatePath("/dashboard");
 }
 
 /* ---------- orders ---------- */

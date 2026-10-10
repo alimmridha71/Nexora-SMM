@@ -5,11 +5,11 @@ export const DEFAULT_SETTINGS = {
   currency: "৳",
   minDeposit: "100",
   supportEmail: "support@example.com",
-  bkashNumber: "",
+  bkashNumber: "01716779220",
   nagadNumber: "",
   rocketNumber: "",
   binanceId: "",
-  paymentNote: "Send the exact amount, then submit your Transaction ID below. Funds are added after we verify it.",
+  paymentNote: "Send Money (Personal) to the number below, then submit your Transaction ID (TrxID). Funds will be added after verification.",
 };
 export type Settings = typeof DEFAULT_SETTINGS;
 
@@ -26,9 +26,9 @@ export async function getSettings(): Promise<Settings> {
 
 export function paymentMethods(s: Settings) {
   return [
-    { id: "bKash", label: "bKash", to: s.bkashNumber },
-    { id: "Nagad", label: "Nagad", to: s.nagadNumber },
-    { id: "Rocket", label: "Rocket", to: s.rocketNumber },
-    { id: "Binance", label: "Binance Pay", to: s.binanceId },
+    { id: "bKash", label: "bKash", type: "Personal (Send Money)", to: s.bkashNumber },
+    { id: "Nagad", label: "Nagad", type: "Personal (Send Money)", to: s.nagadNumber },
+    { id: "Rocket", label: "Rocket", type: "Personal (Send Money)", to: s.rocketNumber },
+    { id: "Binance", label: "Binance Pay", type: "Pay ID", to: s.binanceId },
   ].filter((m) => m.to);
 }

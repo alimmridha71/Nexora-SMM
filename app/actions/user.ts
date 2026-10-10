@@ -29,23 +29,23 @@ export async function submitPaymentAction(_: FormState, fd: FormData): Promise<F
   const s = await getSettings();
   const method = str(fd, "method");
   const amount = Number(str(fd, "amount"));
-  const trxId = str(fd, "trxId").toUpperCase();
+  const trxId = str(fd, "trxId").replace(/[\s\r\n\t]/g, "").toUpperCase();
   const note = str(fd, "note").slice(0, 200) || null;
 
-  if (!paymentMethods(s).some((m) => m.id === method)) return { error: "Choose a payment method" };
+  if (!paymentMethods(s).some((m) => m.id === method)) return { error: "Choose a valid payment method" };
   if (!Number.isFinite(amount) || amount < Number(s.minDeposit))
     return { error: `Minimum deposit is ${s.currency}${s.minDeposit}` };
-  if (!/^[A-Z0-9]{6,40}$/.test(trxId)) return { error: "Enter a valid Transaction ID (letters and numbers only)" };
+  if (!/^[A-Z0-9]{4,40}$/.test(trxId)) return { error: "Enter a valid Transaction ID (e.g. BL92A4KF9)" };
 
   const pending = await db.payment.count({ where: { userId: user.id, status: "PENDING" } });
-  if (pending >= 5) return { error: "You have 5 payments waiting for review. Wait for them to be processed." };
+  if (pending >= 5) return { error: "You have 5 payments waiting for review. Please wait for them to be processed." };
   try {
     await db.payment.create({ data: { userId: user.id, method, amount, trxId, note } });
   } catch {
-    return { error: "This Transaction ID was already submitted" };
+    return { error: "This Transaction ID has already been submitted. Please check your history or contact support." };
   }
   revalidatePath("/add-funds");
-  return { ok: "Payment submitted. We will add the funds after verification." };
+  return { ok: "Payment submitted successfully! Funds will be credited after verification." };
 }
 
 export async function createTicketAction(_: FormState, fd: FormData): Promise<FormState> {
