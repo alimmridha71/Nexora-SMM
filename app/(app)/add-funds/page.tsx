@@ -28,17 +28,17 @@ export default async function AddFunds() {
 
       {/* Pending Notice Banner if user has payments under review */}
       {pendingPayments.length > 0 && (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-300">
-          <div className="flex items-center gap-2 font-bold text-amber-200">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-800">
+          <div className="flex items-center gap-2 font-bold text-amber-900">
             <span>⏳</span> You have {pendingPayments.length} deposit{pendingPayments.length > 1 ? "s" : ""} waiting for admin review:
           </div>
           <div className="mt-2 flex flex-wrap gap-2">
             {pendingPayments.map((p) => (
               <span
                 key={p.id}
-                className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 bg-ink-900/80 px-2.5 py-1 font-mono text-[11px]"
+                className="inline-flex items-center gap-1.5 rounded-md border border-amber-300 bg-white px-2.5 py-1 font-mono text-[11px] text-slate-800 shadow-2xs"
               >
-                <span>{p.method}</span> • <b>{money(p.amount.toString(), s.currency)}</b> • TrxID: {p.trxId}
+                <span>{p.method}</span> • <b className="text-amber-800">{money(p.amount.toString(), s.currency)}</b> • TrxID: {p.trxId}
               </span>
             ))}
           </div>
@@ -58,8 +58,8 @@ export default async function AddFunds() {
       <div className="mt-12 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-white">Deposit History (লেনদেনের ইতিহাস)</h2>
-            <p className="text-xs text-slate-400">Track all your submitted manual deposits and verification status.</p>
+            <h2 className="text-lg font-bold text-slate-900">Deposit History (লেনদেনের ইতিহাস)</h2>
+            <p className="text-xs text-slate-500">Track all your submitted manual deposits and verification status.</p>
           </div>
           <span className="text-xs text-slate-500">Last 30 deposits</span>
         </div>
@@ -70,26 +70,26 @@ export default async function AddFunds() {
         >
           {history.map((p) => (
             <tr key={p.id}>
-              <td className="whitespace-nowrap text-slate-400">{dateTime(p.createdAt)}</td>
-              <td className="font-semibold text-white">
+              <td className="whitespace-nowrap text-slate-500">{dateTime(p.createdAt)}</td>
+              <td className="font-semibold text-slate-900">
                 <span className="inline-flex items-center gap-1.5">
-                  {p.method === "bKash" && <span className="text-[#ff4081]">🌸</span>}
+                  {p.method === "bKash" && <span className="text-[#be185d]">🌸</span>}
                   {p.method === "Nagad" && <span>🟠</span>}
                   {p.method === "Rocket" && <span>🚀</span>}
                   {p.method === "Binance" && <span>🟡</span>}
                   {p.method}
                 </span>
               </td>
-              <td className="font-mono text-xs text-slate-300">
+              <td className="font-mono text-xs text-slate-700">
                 <div className="flex items-center gap-2">
-                  <span className="select-all font-bold">{p.trxId}</span>
+                  <span className="select-all font-bold text-slate-900">{p.trxId}</span>
                   <CopyButton text={p.trxId} label="Copy" className="px-1.5 py-0.5 text-[10px]" />
                 </div>
               </td>
-              <td className="font-semibold text-gold-400 whitespace-nowrap">
+              <td className="font-bold text-amber-700 whitespace-nowrap">
                 {money(p.amount.toString(), s.currency)}
               </td>
-              <td className="text-xs text-slate-400 max-w-[160px] truncate">
+              <td className="text-xs text-slate-500 max-w-[160px] truncate">
                 {p.note || "—"}
               </td>
               <td>

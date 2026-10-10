@@ -50,12 +50,12 @@ export function PaymentClient({
       case "bKash":
         return {
           cardBg: isSelected
-            ? "border-[#e2136e] bg-[#e2136e]/15 shadow-lg shadow-[#e2136e]/20"
-            : "border-ink-700 bg-ink-800/80 hover:border-[#e2136e]/50 hover:bg-[#e2136e]/5",
-          accentText: "text-[#ff4081]",
-          badgeBg: "bg-[#e2136e]/20 text-[#ff4081] border-[#e2136e]/40",
+            ? "border-[#e2136e] bg-[#fdf2f8] shadow-md shadow-[#e2136e]/10 ring-2 ring-[#e2136e]/30"
+            : "border-slate-200 bg-white hover:border-[#e2136e]/50 hover:bg-[#fdf2f8]/50",
+          accentText: "text-[#be185d]",
+          badgeBg: "bg-[#fdf2f8] text-[#be185d] border-[#fbcfe8]",
           icon: (
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e2136e] text-white font-bold text-sm shadow-md shadow-[#e2136e]/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e2136e] text-white font-bold text-sm shadow-md shadow-[#e2136e]/20">
               bK
             </div>
           ),
@@ -63,12 +63,12 @@ export function PaymentClient({
       case "Nagad":
         return {
           cardBg: isSelected
-            ? "border-[#f7941d] bg-[#f7941d]/15 shadow-lg shadow-[#f7941d]/20"
-            : "border-ink-700 bg-ink-800/80 hover:border-[#f7941d]/50 hover:bg-[#f7941d]/5",
-          accentText: "text-[#f7941d]",
-          badgeBg: "bg-[#f7941d]/20 text-[#f7941d] border-[#f7941d]/40",
+            ? "border-[#ea580c] bg-[#fff7ed] shadow-md shadow-[#ea580c]/10 ring-2 ring-[#ea580c]/30"
+            : "border-slate-200 bg-white hover:border-[#ea580c]/50 hover:bg-[#fff7ed]/50",
+          accentText: "text-[#c2410c]",
+          badgeBg: "bg-[#fff7ed] text-[#c2410c] border-[#fed7aa]",
           icon: (
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f7941d] text-white font-bold text-sm shadow-md shadow-[#f7941d]/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ea580c] text-white font-bold text-sm shadow-md shadow-[#ea580c]/20">
               NG
             </div>
           ),
@@ -76,12 +76,12 @@ export function PaymentClient({
       case "Rocket":
         return {
           cardBg: isSelected
-            ? "border-[#8c3494] bg-[#8c3494]/15 shadow-lg shadow-[#8c3494]/20"
-            : "border-ink-700 bg-ink-800/80 hover:border-[#8c3494]/50 hover:bg-[#8c3494]/5",
-          accentText: "text-[#ba68c8]",
-          badgeBg: "bg-[#8c3494]/20 text-[#ba68c8] border-[#8c3494]/40",
+            ? "border-[#9333ea] bg-[#faf5ff] shadow-md shadow-[#9333ea]/10 ring-2 ring-[#9333ea]/30"
+            : "border-slate-200 bg-white hover:border-[#9333ea]/50 hover:bg-[#faf5ff]/50",
+          accentText: "text-[#7e22ce]",
+          badgeBg: "bg-[#faf5ff] text-[#7e22ce] border-[#e9d5ff]",
           icon: (
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8c3494] text-white font-bold text-sm shadow-md shadow-[#8c3494]/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#9333ea] text-white font-bold text-sm shadow-md shadow-[#9333ea]/20">
               🚀
             </div>
           ),
@@ -89,12 +89,12 @@ export function PaymentClient({
       case "Binance":
         return {
           cardBg: isSelected
-            ? "border-[#f3ba2f] bg-[#f3ba2f]/15 shadow-lg shadow-[#f3ba2f]/20"
-            : "border-ink-700 bg-ink-800/80 hover:border-[#f3ba2f]/50 hover:bg-[#f3ba2f]/5",
-          accentText: "text-[#f3ba2f]",
-          badgeBg: "bg-[#f3ba2f]/20 text-[#f3ba2f] border-[#f3ba2f]/40",
+            ? "border-[#d97706] bg-[#fffbeb] shadow-md shadow-[#d97706]/10 ring-2 ring-[#d97706]/30"
+            : "border-slate-200 bg-white hover:border-[#d97706]/50 hover:bg-[#fffbeb]/50",
+          accentText: "text-[#b45309]",
+          badgeBg: "bg-[#fffbeb] text-[#b45309] border-[#fde68a]",
           icon: (
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f3ba2f] text-black font-bold text-sm shadow-md shadow-[#f3ba2f]/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d97706] text-white font-bold text-sm shadow-md shadow-[#d97706]/20">
               BN
             </div>
           ),
@@ -102,10 +102,10 @@ export function PaymentClient({
       default:
         return {
           cardBg: isSelected
-            ? "border-nova-500 bg-nova-500/15"
-            : "border-ink-700 bg-ink-800/80 hover:border-ink-600",
-          accentText: "text-white",
-          badgeBg: "bg-ink-700 text-slate-300 border-ink-600",
+            ? "border-blue-600 bg-blue-50 shadow-md ring-2 ring-blue-500/30"
+            : "border-slate-200 bg-white hover:border-slate-300",
+          accentText: "text-slate-900",
+          badgeBg: "bg-slate-100 text-slate-700 border-slate-200",
           icon: <div className="text-xl">💳</div>,
         };
     }
@@ -113,8 +113,8 @@ export function PaymentClient({
 
   if (methods.length === 0) {
     return (
-      <Panel className="p-8 text-center text-slate-400">
-        <p className="text-base font-semibold text-white">Payment methods are currently updating.</p>
+      <Panel className="p-8 text-center text-slate-500">
+        <p className="text-base font-semibold text-slate-900">Payment methods are currently updating.</p>
         <p className="mt-1 text-sm text-slate-500">Contact support at {supportEmail} for manual deposits.</p>
       </Panel>
     );
@@ -125,13 +125,13 @@ export function PaymentClient({
       {/* Left Column: Method Details & Instructions (7 cols) */}
       <div className="space-y-6 lg:col-span-7">
         {/* Step 1: Gateway Selection */}
-        <Panel className="p-5 sm:p-6">
-          <div className="mb-4 flex items-center justify-between border-b border-ink-700/80 pb-3">
+        <Panel className="p-5 sm:p-6 bg-white border border-slate-200 shadow-xs">
+          <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-nova-400">Step 1</span>
-              <h2 className="text-base font-bold text-white">Select Payment Gateway</h2>
+              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Step 1</span>
+              <h2 className="text-base font-bold text-slate-900">Select Payment Gateway</h2>
             </div>
-            <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
+            <span className="rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
               Personal Send Money
             </span>
           </div>
@@ -152,21 +152,21 @@ export function PaymentClient({
                     <div className="flex items-center gap-3">
                       {theme.icon}
                       <div>
-                        <b className="block text-sm font-bold text-white">{m.label}</b>
-                        <span className="text-[11px] text-slate-400">
+                        <b className="block text-sm font-bold text-slate-900">{m.label}</b>
+                        <span className="text-[11px] text-slate-500">
                           {m.type || (m.id === "bKash" ? "Personal (Send Money)" : "Account")}
                         </span>
                       </div>
                     </div>
                     {isSelected && (
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-nova-500 text-[11px] text-white font-bold">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[11px] text-white font-bold">
                         ✓
                       </span>
                     )}
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between gap-2 border-t border-ink-700/60 pt-3">
-                    <span className="font-mono text-sm font-semibold tracking-wider text-white select-all">
+                  <div className="mt-4 flex items-center justify-between gap-2 border-t border-slate-200/80 pt-3">
+                    <span className="font-mono text-sm font-bold tracking-wider text-slate-900 select-all">
                       {m.to}
                     </span>
                     <CopyButton text={m.to} label="Copy" />
@@ -178,17 +178,17 @@ export function PaymentClient({
 
           {/* Active Gateway Highlight Banner */}
           {activeMethod && (
-            <div className="mt-5 rounded-xl border border-ink-700 bg-ink-900/90 p-4">
+            <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
                     Selected Gateway Number:
                   </span>
                   <div className="mt-0.5 flex items-center gap-2">
-                    <span className="font-mono text-lg font-bold tracking-wider text-gold-400 select-all">
+                    <span className="font-mono text-xl font-bold tracking-wider text-slate-900 select-all">
                       {activeMethod.to}
                     </span>
-                    <span className="rounded border border-ink-600 bg-ink-800 px-2 py-0.5 text-[11px] text-slate-300">
+                    <span className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-700">
                       {activeMethod.label} (Personal)
                     </span>
                   </div>
@@ -199,64 +199,64 @@ export function PaymentClient({
           )}
 
           {/* Step-by-Step Instructions */}
-          <div className="mt-5 rounded-xl border border-ink-700/60 bg-ink-950/60 p-4">
-            <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-200">
+          <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-800">
               <span>📋</span> কীভাবে টাকা পাঠাবেন ({activeMethod.label} Instructions):
             </h3>
 
             {isBkash && (
-              <ol className="mt-3 space-y-2 text-xs text-slate-300 leading-relaxed">
+              <ol className="mt-3 space-y-2 text-xs text-slate-700 leading-relaxed">
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     1
                   </span>
-                  <span>আপনার বিকাশ অ্যাপ ওপেন করুন অথবা ডায়াল করুন <b className="text-white">*247#</b></span>
+                  <span>আপনার বিকাশ অ্যাপ ওপেন করুন অথবা ডায়াল করুন <b className="text-slate-900 font-bold">*247#</b></span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     2
                   </span>
                   <span>
-                    মেনু থেকে <b className="text-white">Send Money</b> (সেন্ড মানি) অপশন নির্বাচন করুন
+                    মেনু থেকে <b className="text-slate-900 font-bold">Send Money</b> (সেন্ড মানি) অপশন নির্বাচন করুন
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     3
                   </span>
                   <span>
-                    প্রাপক নম্বর দিন: <b className="font-mono text-white select-all">{activeMethod.to}</b>
+                    প্রাপক নম্বর দিন: <b className="font-mono text-slate-900 font-bold select-all">{activeMethod.to}</b>
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     4
                   </span>
                   <span>
-                    টাকার পরিমাণ লিখুন (সর্বনিম্ন <b className="text-gold-400">{currency}{minDeposit}</b>)
+                    টাকার পরিমাণ লিখুন (সর্বনিম্ন <b className="text-amber-700 font-bold">{currency}{minDeposit}</b>)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     5
                   </span>
                   <span>আপনার গোপন পিন দিয়ে সেন্ড মানি সম্পন্ন করুন</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e2136e]/20 text-[10px] font-bold text-[#ff4081]">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdf2f8] border border-[#fbcfe8] text-[10px] font-bold text-[#be185d]">
                     6
                   </span>
                   <span>
-                    লেনদেন সম্পন্ন হলে আসা <b className="text-[#ff4081]">TrxID</b> কপি করে পাশের ফর্মে সাবমিট করুন
+                    লেনদেন সম্পন্ন হলে আসা <b className="text-[#be185d] font-bold">TrxID</b> কপি করে পাশের ফর্মে সাবমিট করুন
                   </span>
                 </li>
               </ol>
             )}
 
             {!isBkash && (
-              <ol className="mt-3 space-y-2 text-xs text-slate-300 leading-relaxed">
+              <ol className="mt-3 space-y-2 text-xs text-slate-700 leading-relaxed">
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-nova-500/20 text-[10px] font-bold text-nova-300">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 border border-blue-200 text-[10px] font-bold text-blue-700">
                     1
                   </span>
                   <span>
@@ -264,23 +264,23 @@ export function PaymentClient({
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-nova-500/20 text-[10px] font-bold text-nova-300">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 border border-blue-200 text-[10px] font-bold text-blue-700">
                     2
                   </span>
                   <span>
-                    প্রাপক নম্বর দিন: <b className="font-mono text-white select-all">{activeMethod.to}</b>
+                    প্রাপক নম্বর দিন: <b className="font-mono text-slate-900 font-bold select-all">{activeMethod.to}</b>
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-nova-500/20 text-[10px] font-bold text-nova-300">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 border border-blue-200 text-[10px] font-bold text-blue-700">
                     3
                   </span>
                   <span>
-                    টাকার পরিমাণ দিন (সর্বনিম্ন <b className="text-gold-400">{currency}{minDeposit}</b>) এবং পিন দিয়ে সম্পন্ন করুন
+                    টাকার পরিমাণ দিন (সর্বনিম্ন <b className="text-amber-700 font-bold">{currency}{minDeposit}</b>) এবং পিন দিয়ে সম্পন্ন করুন
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-nova-500/20 text-[10px] font-bold text-nova-300">
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 border border-blue-200 text-[10px] font-bold text-blue-700">
                     4
                   </span>
                   <span>প্রাপ্ত TrxID কপি করে পাশের ফর্মে সাবমিট করুন</span>
@@ -288,9 +288,9 @@ export function PaymentClient({
               </ol>
             )}
 
-            <div className="mt-4 flex items-center justify-between border-t border-ink-800 pt-3 text-[11px] text-slate-400">
-              <span>⚡ নূন্যতম ডিপোজিট: <b className="text-white">{currency}{minDeposit}</b></span>
-              <span>⏱️ ভেরিফিকেশন সময়: <b className="text-emerald-400">২ - ১৫ মিনিট</b></span>
+            <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-[11px] text-slate-600">
+              <span>⚡ নূন্যতম ডিপোজিট: <b className="text-slate-900 font-bold">{currency}{minDeposit}</b></span>
+              <span>⏱️ ভেরিফিকেশন সময়: <b className="text-emerald-700 font-bold">২ - ১৫ মিনিট</b></span>
             </div>
           </div>
         </Panel>
@@ -298,11 +298,11 @@ export function PaymentClient({
 
       {/* Right Column: Submit Form (5 cols) */}
       <div className="space-y-6 lg:col-span-5">
-        <Panel className="p-5 sm:p-6">
-          <div className="mb-4 border-b border-ink-700/80 pb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gold-400">Step 2</span>
-            <h2 className="text-base font-bold text-white">Submit Transaction ID</h2>
-            <p className="mt-0.5 text-xs text-slate-400">
+        <Panel className="p-5 sm:p-6 bg-white border border-slate-200 shadow-xs">
+          <div className="mb-4 border-b border-slate-200 pb-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600">Step 2</span>
+            <h2 className="text-base font-bold text-slate-900">Submit Transaction ID</h2>
+            <p className="mt-0.5 text-xs text-slate-500">
               টাকা পাঠানোর পর প্রাপ্ত TrxID এবং সঠিক তথ্য নিচে পূরণ করুন।
             </p>
           </div>
@@ -328,7 +328,7 @@ export function PaymentClient({
             <Field label={`Amount Sent (${currency})`} hint={`Minimum deposit: ${currency}${minDeposit}`}>
               <div className="space-y-2">
                 <div className="relative">
-                  <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 font-semibold text-gold-400">
+                  <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-slate-600">
                     {currency}
                   </span>
                   <input
@@ -340,7 +340,7 @@ export function PaymentClient({
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder={`Min ${minDeposit}`}
-                    className={`${inp} pl-9 font-semibold text-white`}
+                    className={`${inp} pl-9 font-bold text-slate-900`}
                   />
                 </div>
 
@@ -353,8 +353,8 @@ export function PaymentClient({
                       onClick={() => setAmount(amt.toString())}
                       className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
                         amount === amt.toString()
-                          ? "border-gold-500 bg-gold-500/20 text-gold-300 font-bold"
-                          : "border-ink-700 bg-ink-900/60 text-slate-400 hover:border-ink-600 hover:text-white"
+                          ? "border-amber-400 bg-amber-100 text-amber-900 font-bold shadow-2xs"
+                          : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-slate-100"
                       }`}
                     >
                       +{currency}{amt}
@@ -376,7 +376,7 @@ export function PaymentClient({
                 value={trxId}
                 onChange={(e) => setTrxId(e.target.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase())}
                 placeholder="Enter TrxID (e.g. BL92A4KF9)"
-                className={`${inp} font-mono uppercase tracking-wider text-emerald-400 placeholder:normal-case placeholder:tracking-normal placeholder:font-sans`}
+                className={`${inp} font-mono uppercase tracking-wider text-slate-900 font-bold placeholder:normal-case placeholder:tracking-normal placeholder:font-sans placeholder:font-normal`}
               />
             </Field>
 
@@ -399,7 +399,7 @@ export function PaymentClient({
             {formState?.error && (
               <div
                 role="alert"
-                className="rounded-lg border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300"
+                className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-700"
               >
                 ⚠️ {formState.error}
               </div>
@@ -408,7 +408,7 @@ export function PaymentClient({
             {formState?.ok && (
               <div
                 role="status"
-                className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-300"
+                className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-xs text-emerald-700"
               >
                 ✅ {formState.ok}
               </div>
@@ -421,7 +421,7 @@ export function PaymentClient({
 
           <p className="mt-4 text-center text-[11px] text-slate-500">
             সমস্যা হলে সাপোর্টে যোগাযোগ করুন:{" "}
-            <a href={`mailto:${supportEmail}`} className="text-nova-400 hover:underline">
+            <a href={`mailto:${supportEmail}`} className="text-blue-600 hover:underline">
               {supportEmail}
             </a>
           </p>

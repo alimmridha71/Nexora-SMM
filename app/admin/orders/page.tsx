@@ -40,9 +40,9 @@ export default async function AdminOrders({ searchParams }: { searchParams: { st
         }
       />
       <div className="mb-4 flex flex-wrap items-center gap-2 text-sm">
-        <Link href="/admin/orders" className={`rounded-full border px-3 py-1 ${!status ? "border-nova-500 text-nova-400" : "border-ink-600 text-slate-400"}`}>All</Link>
+        <Link href="/admin/orders" className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${!status ? "border-blue-300 bg-blue-50 text-blue-700 font-semibold shadow-2xs" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"}`}>All</Link>
         {STATUSES.map((x) => (
-          <Link key={x} href={`/admin/orders?status=${x}`} className={`rounded-full border px-3 py-1 ${status === x ? "border-nova-500 text-nova-400" : "border-ink-600 text-slate-400 hover:text-white"}`}>
+          <Link key={x} href={`/admin/orders?status=${x}`} className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${status === x ? "border-blue-300 bg-blue-50 text-blue-700 font-semibold shadow-2xs" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"}`}>
             {x.replace("_", " ").toLowerCase()}
           </Link>
         ))}

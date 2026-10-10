@@ -3,24 +3,24 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
-  background: #080c14;
+  background: #f8fafc;
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-[#080c14] text-slate-200 font-sans antialiased min-h-screen selection:bg-nova-500 selection:text-white;
+  @apply bg-[#f8fafc] text-slate-800 font-sans antialiased min-h-screen selection:bg-nova-500 selection:text-white;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91, 140, 255, 0.18), transparent 70%),
-    radial-gradient(circle at 80% 20%, rgba(120, 80, 255, 0.08), transparent 40%);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.06), transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.04), transparent 40%);
   background-attachment: fixed;
 }
 
 h1, h2, h3, h4 {
-  @apply font-display tracking-tight text-white;
+  @apply font-display tracking-tight text-slate-900;
 }
 
 /* Custom scrollbar */
@@ -29,14 +29,14 @@ h1, h2, h3, h4 {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0e17;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #212a3e;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d384f;
+  background: #94a3b8;
 }
 
 /* Hide scrollbar for touch carousels/navs */
@@ -50,28 +50,29 @@ h1, h2, h3, h4 {
 
 /* Form focus ring */
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid #5b8cff;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
-/* Glass and glow utilities */
+/* Glass and glow utilities for light mode */
 .glass-panel {
-  background: rgba(15, 21, 33, 0.75);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(45, 56, 79, 0.6);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(22, 29, 45, 0.8) 0%, rgba(15, 21, 33, 0.6) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(45, 56, 79, 0.5);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(91, 140, 255, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(91, 140, 255, 0.15);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 28px -5px rgba(37, 99, 235, 0.12);
   transform: translateY(-2px);
 }
 
@@ -80,7 +81,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   transition: all 0.2s ease;
 }
 .glow-btn:hover {
-  box-shadow: 0 0 20px rgba(91, 140, 255, 0.45);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {

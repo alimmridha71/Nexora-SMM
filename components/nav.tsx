@@ -18,8 +18,8 @@ export function NavLinks({ items }: { items: { href: string; label: string }[] }
             aria-current={active ? "page" : undefined}
             className={`flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-all active:scale-95 ${
               active
-                ? "bg-nova-500/20 text-nova-300 shadow-sm shadow-nova-500/10 border border-nova-500/30"
-                : "text-slate-400 hover:bg-ink-800 hover:text-white"
+                ? "bg-blue-50 text-blue-700 font-semibold shadow-2xs border border-blue-200"
+                : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
             }`}
           >
             <span>{i.label}</span>

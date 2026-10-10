@@ -54,8 +54,8 @@ export function OrderForm({
 
   if (!services.length)
     return (
-      <div className="rounded-xl border border-ink-700 bg-ink-800 p-8 text-center text-slate-400">
-        <p className="text-base font-semibold text-white">No active services available</p>
+      <div className="rounded-xl border border-slate-200 bg-white p-8 text-center text-slate-500 shadow-xs">
+        <p className="text-base font-semibold text-slate-900">No active services available</p>
         <p className="mt-1 text-sm text-slate-500">The admin hasn't synced services from the provider yet.</p>
       </div>
     );
@@ -65,7 +65,7 @@ export function OrderForm({
       <input type="hidden" name="key" value={key} />
       <input type="hidden" name="serviceId" value={svc?.id ?? ""} />
 
-      <div className="space-y-5 rounded-xl border border-ink-700/80 bg-ink-800/80 p-6 shadow-xl backdrop-blur-sm">
+      <div className="space-y-5 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
         <Field label="1. Category">
           <select
             className={inp}
@@ -129,8 +129,8 @@ export function OrderForm({
         </Field>
 
         {/* Quick info note */}
-        <div className="rounded-lg border border-ink-600/70 bg-ink-900/60 p-3.5 text-xs text-slate-400">
-          <p className="font-semibold text-slate-300">💡 Important Instructions:</p>
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-3.5 text-xs text-slate-600">
+          <p className="font-semibold text-slate-800">💡 Important Instructions:</p>
           <ul className="mt-1 list-disc pl-4 space-y-1">
             <li>Do not place multiple orders for the same link at the same time.</li>
             <li>Double-check your link format before submitting.</li>
@@ -139,41 +139,41 @@ export function OrderForm({
       </div>
 
       {/* Right Column: Order Summary Card */}
-      <aside className="h-fit space-y-5 rounded-xl border border-nova-500/30 bg-gradient-to-b from-ink-800 to-ink-900 p-6 shadow-2xl">
-        <h3 className="border-b border-ink-700/80 pb-3 text-base font-bold text-white">
+      <aside className="h-fit space-y-5 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+        <h3 className="border-b border-slate-200 pb-3 text-base font-bold text-slate-900">
           Order Summary
         </h3>
 
         {svc && (
-          <div className="space-y-3 text-xs text-slate-300">
+          <div className="space-y-3 text-xs text-slate-600">
             <div className="flex justify-between">
-              <span className="text-slate-400">Service ID:</span>
-              <span className="font-mono font-semibold text-white">#{svc.publicId}</span>
+              <span className="text-slate-500">Service ID:</span>
+              <span className="font-mono font-semibold text-slate-900">#{svc.publicId}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Rate / 1k:</span>
-              <span className="font-semibold text-white">{currency}{svc.sellRate.toFixed(2)}</span>
+              <span className="text-slate-500">Rate / 1k:</span>
+              <span className="font-semibold text-slate-900">{currency}{svc.sellRate.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Min - Max:</span>
-              <span>{svc.min.toLocaleString()} - {svc.max.toLocaleString()}</span>
+              <span className="text-slate-500">Min - Max:</span>
+              <span className="font-medium text-slate-900">{svc.min.toLocaleString()} - {svc.max.toLocaleString()}</span>
             </div>
           </div>
         )}
 
-        <div className="rounded-xl border border-gold-500/30 bg-gold-500/10 p-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-gold-400">Total Charge</p>
-          <p className="mt-1 font-display text-3xl font-extrabold text-gold-400">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-800">Total Charge</p>
+          <p className="mt-1 font-display text-3xl font-extrabold text-amber-700">
             {currency}{charge.toFixed(2)}
           </p>
         </div>
 
-        <SubmitButton className="w-full rounded-lg bg-nova-500 py-3 text-sm font-semibold text-white shadow-lg shadow-nova-500/30 transition-all hover:bg-nova-600 active:scale-95 disabled:opacity-60">
+        <SubmitButton className="w-full rounded-lg bg-nova-500 py-3 text-sm font-semibold text-white shadow-md shadow-nova-500/20 transition-all hover:bg-nova-600 active:scale-95 disabled:opacity-60">
           Confirm & Place Order
         </SubmitButton>
 
         {state?.error && (
-          <div role="alert" className="rounded-lg border border-rose-500/40 bg-rose-500/10 p-3 text-xs text-rose-300">
+          <div role="alert" className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-700">
             ⚠️ {state.error}
           </div>
         )}

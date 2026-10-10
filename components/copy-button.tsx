@@ -20,8 +20,8 @@ export function CopyButton({ text, label = "Copy", className = "" }: { text: str
       onClick={handleCopy}
       className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-medium transition-colors ${
         copied
-          ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
-          : "bg-ink-700/80 text-slate-300 border border-ink-600 hover:border-nova-500 hover:text-white"
+          ? "bg-emerald-50 text-emerald-700 border border-emerald-300"
+          : "bg-slate-100 text-slate-700 border border-slate-300 hover:border-nova-500 hover:text-nova-600 hover:bg-slate-200"
       } ${className}`}
     >
       {copied ? (
