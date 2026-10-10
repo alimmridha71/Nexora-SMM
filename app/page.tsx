@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 import { Logo } from "@/components/ui";
+import { logoutAction } from "@/app/actions/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -92,12 +93,22 @@ export default async function Home() {
 
           <div className="flex items-center gap-3">
             {user ? (
-              <Link
-                href={user.role === "ADMIN" ? "/admin" : "/dashboard"}
-                className="rounded-lg bg-nova-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-nova-500/25 transition-all hover:bg-nova-600 active:scale-95"
-              >
-                Dashboard
-              </Link>
+              <>
+                <Link
+                  href={user.role === "ADMIN" ? "/admin" : "/dashboard"}
+                  className="rounded-lg bg-nova-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-nova-500/25 transition-all hover:bg-nova-600 active:scale-95"
+                >
+                  {user.role === "ADMIN" ? "Admin Panel" : "Dashboard"}
+                </Link>
+                <form action={logoutAction}>
+                  <button
+                    type="submit"
+                    className="rounded-lg border border-ink-700 bg-ink-800/80 px-3.5 py-2 text-xs font-medium text-slate-300 hover:border-ink-600 hover:bg-ink-700 hover:text-white transition-all active:scale-95"
+                  >
+                    Log out
+                  </button>
+                </form>
+              </>
             ) : (
               <>
                 <Link
