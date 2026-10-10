@@ -96,29 +96,81 @@ export function ServicesCatalog({
         Showing <span className="font-semibold text-white">{filtered.length}</span> of {services.length} services
       </p>
 
-      {/* Table */}
-      <Table
-        head={["ID", "Service Name", "Category", "Rate / 1k", "Min", "Max", "Action"]}
-        empty={filtered.length === 0 ? "No services match your search." : undefined}
-      >
-        {filtered.map((x) => (
-          <tr key={x.id}>
-            <td className="font-mono text-xs text-slate-400">#{x.publicId}</td>
-            <td className="font-medium text-white max-w-md">{x.name}</td>
-            <td className="text-xs text-slate-400">{x.category}</td>
-            <td className="whitespace-nowrap font-semibold text-gold-400">
-              {money(x.sellRate, currency)}
-            </td>
-            <td className="text-xs text-slate-300">{x.min.toLocaleString()}</td>
-            <td className="text-xs text-slate-300">{x.max.toLocaleString()}</td>
-            <td>
-              <Link href={`/new-order?service=${x.publicId}`} className={btnGhost}>
-                Order
-              </Link>
-            </td>
-          </tr>
-        ))}
-      </Table>
+      {/* Mobile Services Card List (< md) */}
+      <div className="grid gap-3.5 sm:grid-cols-2 md:hidden">
+        {filtered.length === 0 ? (
+          <div className="col-span-full rounded-xl border border-ink-700 bg-ink-800/80 p-8 text-center text-sm text-slate-400">
+            No services match your search.
+          </div>
+        ) : (
+          filtered.map((x) => (
+            <div
+              key={x.id}
+              className="flex flex-col justify-between rounded-xl border border-ink-700/80 bg-ink-800/90 p-4 shadow-md transition-all active:scale-[0.99]"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2">
+                  <span className="rounded bg-ink-900 px-2 py-0.5 font-mono text-[11px] font-semibold text-slate-400 border border-ink-700">
+                    #{x.publicId}
+                  </span>
+                  <span className="rounded-full bg-nova-500/15 border border-nova-500/30 px-2 py-0.5 text-[10px] font-semibold text-nova-300">
+                    {x.category}
+                  </span>
+                </div>
+                <h4 className="mt-2.5 text-sm font-semibold text-white leading-snug">
+                  {x.name}
+                </h4>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-ink-700/60">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Rate / 1k:</span>
+                  <span className="font-display text-base font-bold text-gold-400">
+                    {money(x.sellRate, currency)}
+                  </span>
+                </div>
+                <div className="mt-1 flex items-center justify-between text-xs text-slate-400">
+                  <span>Limits:</span>
+                  <span>{x.min.toLocaleString()} - {x.max.toLocaleString()}</span>
+                </div>
+
+                <Link
+                  href={`/new-order?service=${x.publicId}`}
+                  className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-nova-500 py-2.5 text-xs font-semibold text-white shadow-md shadow-nova-500/20 active:scale-95 transition-all"
+                >
+                  ⚡ Order This Service
+                </Link>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Desktop Services Table (>= md) */}
+      <div className="hidden md:block">
+        <Table
+          head={["ID", "Service Name", "Category", "Rate / 1k", "Min", "Max", "Action"]}
+          empty={filtered.length === 0 ? "No services match your search." : undefined}
+        >
+          {filtered.map((x) => (
+            <tr key={x.id}>
+              <td className="font-mono text-xs text-slate-400">#{x.publicId}</td>
+              <td className="font-medium text-white max-w-md">{x.name}</td>
+              <td className="text-xs text-slate-400">{x.category}</td>
+              <td className="whitespace-nowrap font-semibold text-gold-400">
+                {money(x.sellRate, currency)}
+              </td>
+              <td className="text-xs text-slate-300">{x.min.toLocaleString()}</td>
+              <td className="text-xs text-slate-300">{x.max.toLocaleString()}</td>
+              <td>
+                <Link href={`/new-order?service=${x.publicId}`} className={btnGhost}>
+                  Order
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </Table>
+      </div>
     </div>
   );
 }

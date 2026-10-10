@@ -150,18 +150,18 @@ export default async function Home() {
                 The most reliable, high-speed automated social media marketing panel. Wholesale pricing for Facebook, YouTube, Instagram, TikTok, Telegram and more — with local bKash/Nagad payments.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                 <Link
                   href={user ? "/new-order" : "/register"}
-                  className="rounded-lg bg-nova-500 px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-nova-500/30 transition-all hover:bg-nova-600 hover:shadow-nova-500/50 active:scale-95"
+                  className="inline-flex items-center justify-center rounded-xl bg-nova-500 px-7 py-3.5 text-center text-sm sm:text-base font-semibold text-white shadow-xl shadow-nova-500/30 transition-all hover:bg-nova-600 hover:shadow-nova-500/50 active:scale-95"
                 >
-                  {user ? "Place New Order" : "Create Free Account"}
+                  {user ? "⚡ Place New Order" : "🚀 Create Free Account"}
                 </Link>
                 <Link
                   href="/services"
-                  className="rounded-lg border border-ink-600 bg-ink-800/60 px-6 py-3.5 text-base font-medium text-slate-200 transition-all hover:border-nova-500 hover:text-white hover:bg-ink-700/60"
+                  className="inline-flex items-center justify-center rounded-xl border border-ink-600 bg-ink-800/80 px-6 py-3.5 text-center text-sm sm:text-base font-medium text-slate-200 transition-all hover:border-nova-500 hover:text-white hover:bg-ink-700/80 active:scale-95"
                 >
-                  View Services & Rates
+                  🔍 View Services & Rates
                 </Link>
               </div>
 
