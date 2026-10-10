@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -38,12 +43,21 @@ export const metadata: Metadata = {
     description:
       "Automated SMM panel with instant bKash payment, lightning-fast order processing, and 24/7 reliable support.",
     siteName: "Nexora SMM",
+    images: [
+      {
+        url: `${siteUrl}/logo.png`,
+        width: 800,
+        height: 800,
+        alt: "Nexora SMM Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nexora SMM — Premier SMM Panel Bangladesh",
     description:
       "Instant social media marketing services with automatic bKash wallet top-up and real-time order tracking.",
+    images: [`${siteUrl}/logo.png`],
   },
   robots: {
     index: true,

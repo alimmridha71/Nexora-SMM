@@ -11,17 +11,32 @@ export const btnGhost =
 export const btnDanger =
   "inline-flex items-center justify-center gap-1.5 rounded-lg border border-rose-200 bg-rose-50 px-3.5 py-1.5 text-xs font-medium text-rose-700 transition-all hover:bg-rose-100 disabled:opacity-60";
 
-export function Logo({ name = "Nexora SMM" }: { name?: string }) {
+export function Logo({
+  name = "Nexora SMM",
+  showText = true,
+  size = "md",
+}: {
+  name?: string;
+  showText?: boolean;
+  size?: "sm" | "md" | "lg";
+}) {
+  const dims = size === "lg" ? 44 : size === "sm" ? 28 : 36;
+  const sizeClass = size === "lg" ? "h-11 w-11" : size === "sm" ? "h-7 w-7" : "h-9 w-9";
+
   return (
-    <span className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-slate-900 group">
-      <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-nova-600 to-nova-500 p-0.5 shadow-md shadow-nova-500/30 group-hover:shadow-nova-500/50 transition-shadow">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-white" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" fillOpacity="0.2" />
-        </svg>
-      </div>
-      <span className="text-slate-900 font-extrabold tracking-tight">
-        {name}
-      </span>
+    <span className="inline-flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-slate-900 group select-none">
+      <img
+        src="/logo.png"
+        alt={name}
+        width={dims}
+        height={dims}
+        className={`${sizeClass} rounded-xl object-contain shadow-xs border border-slate-200/90 group-hover:scale-105 transition-transform duration-200`}
+      />
+      {showText && (
+        <span className="text-slate-900 font-extrabold tracking-tight">
+          {name}
+        </span>
+      )}
     </span>
   );
 }
