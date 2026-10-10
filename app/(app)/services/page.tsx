@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
@@ -30,7 +31,9 @@ export default async function Services() {
         title="Service Catalog"
         sub={`All wholesale pricing is shown per 1,000 quantity in ${s.currency}. Search by name or category.`}
       />
-      <ServicesCatalog services={services} currency={s.currency} />
+      <Suspense fallback={<div className="p-8 text-center text-slate-400">Loading service catalog...</div>}>
+        <ServicesCatalog services={services} currency={s.currency} />
+      </Suspense>
     </>
   );
 }

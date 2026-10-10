@@ -1,5 +1,6 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Table, btnGhost } from "@/components/ui";
 import { money } from "@/lib/util";
@@ -21,8 +22,19 @@ export function ServicesCatalog({
   services: SvcItem[];
   currency: string;
 }) {
-  const [search, setSearch] = useState("");
-  const [selectedCat, setSelectedCat] = useState("ALL");
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
+  const initialCat = searchParams.get("cat") || "ALL";
+
+  const [search, setSearch] = useState(initialQuery);
+  const [selectedCat, setSelectedCat] = useState(initialCat);
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    const cat = searchParams.get("cat");
+    if (q !== null) setSearch(q);
+    if (cat !== null) setSelectedCat(cat);
+  }, [searchParams]);
 
   const categories = useMemo(() => {
     const set = new Set(services.map((s) => s.category));
