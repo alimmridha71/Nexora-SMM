@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #080c14;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#080c14] text-slate-200 font-sans antialiased min-h-screen selection:bg-nova-500 selection:text-white;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91, 140, 255, 0.18), transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(120, 80, 255, 0.08), transparent 40%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display tracking-tight text-white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+::-webkit-scrollbar-thumb {
+  background: #212a3e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d384f;
+}
+
+/* Form focus ring */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #5b8cff;
+  outline-offset: 2px;
+}
+
+/* Glass and glow utilities */
+.glass-panel {
+  background: rgba(15, 21, 33, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(45, 56, 79, 0.6);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(22, 29, 45, 0.8) 0%, rgba(15, 21, 33, 0.6) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 56, 79, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(91, 140, 255, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(91, 140, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.glow-btn {
+  position: relative;
+  transition: all 0.2s ease;
+}
+.glow-btn:hover {
+  box-shadow: 0 0 20px rgba(91, 140, 255, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

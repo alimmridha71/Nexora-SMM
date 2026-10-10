@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+enum OrderStatus {
+  PENDING_SUBMIT
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  PARTIAL
+  CANCELED
+  FAILED
+}
+enum TxType {
+  DEPOSIT
+  ORDER_DEBIT
+  REFUND
+  ADJUST
+}
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+enum TicketStatus {
+  OPEN
+  ANSWERED
+  CLOSED
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  name         String
+  passwordHash String
+  role         Role          @default(USER)
+  active       Boolean       @default(true)
+  balance      Decimal       @default(0) @db.Decimal(14, 4)
+  apiKey       String        @unique
+  orders       Order[]
+  txs          Transaction[]
+  payments     Payment[]
+  tickets      Ticket[]
+  createdAt    DateTime      @default(now())
+}
+
+model Provider {
+  id             String    @id @default(cuid())
+  name           String
+  apiUrl         String
+  apiKeyEnc      String
+  active         Boolean   @default(true)
+  priority       Int       @default(0)
+  marginPct      Decimal   @default(30) @db.Decimal(8, 2)
+  rateMultiplier Decimal   @default(1) @db.Decimal(10, 4) // e.g. USD -> BDT
+  services       Service[]
+}
+
+model Service {
+  id         String   @id @default(cuid())
+  publicId   Int      @unique @default(autoincrement())
+  providerId String
+  provider   Provider @relation(fields: [providerId], references: [id])
+  externalId String
+  name       String
+  category   String
+  rate       Decimal  @db.Decimal(14, 4) // provider's raw cost per 1000
+  sellRate   Decimal  @db.Decimal(14, 4) // your price per 1000 (site currency)
+  min        Int
+  max        Int
+  active     Boolean  @default(true)
+  locked     Boolean  @default(false) // true = sellRate set manually, sync won't overwrite
+  orders     Order[]
+
+  @@unique([providerId, externalId])
+  @@index([active, category])
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  publicId        Int         @unique @default(autoincrement())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id])
+  serviceId       String
+  service         Service     @relation(fields: [serviceId], references: [id])
+  link            String
+  quantity        Int
+  charge          Decimal     @db.Decimal(14, 4)
+  status          OrderStatus @default(PENDING_SUBMIT)
+  providerOrderId String?
+  remains         Int?
+  source          String      @default("web")
+  idempotencyKey  String      @unique
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([status, updatedAt])
+  @@index([userId, createdAt])
+}
+
+model Transaction {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      TxType
+  amount    Decimal  @db.Decimal(14, 4)
+  orderId   String?
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model Payment {
+  id         String        @id @default(cuid())
+  userId     String
+  user       User          @relation(fields: [userId], references: [id])
+  method     String
+  amount     Decimal       @db.Decimal(14, 4)
+  trxId      String
+  note       String?
+  status     PaymentStatus @default(PENDING)
+  createdAt  DateTime      @default(now())
+  reviewedAt DateTime?
+
+  @@unique([method, trxId])
+  @@index([status, createdAt])
+}
+
+model Ticket {
+  id        String          @id @default(cuid())
+  publicId  Int             @unique @default(autoincrement())
+  userId    String
+  user      User            @relation(fields: [userId], references: [id])
+  subject   String
+  status    TicketStatus    @default(OPEN)
+  messages  TicketMessage[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model TicketMessage {
+  id        String   @id @default(cuid())
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  isStaff   Boolean  @default(false)
+  body      String
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key   String @id
+  value String
+}
