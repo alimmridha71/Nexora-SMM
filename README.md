@@ -24,7 +24,7 @@ Generate secrets with `openssl rand -hex 32` (ENCRYPTION_KEY, AUTH_SECRET) and `
 ## 3. Deploy (GitHub + Vercel)
 1. Push to a **private** GitHub repo (`.env` is git-ignored).
 2. Create a Postgres DB (Neon/Supabase). Run `npm run db:push` and `npm run db:seed` once from your machine against it.
-3. Import the repo in Vercel, add the env vars from `.env.example` (use the pooled DB URL on Vercel).
+3. Import the repo in Vercel, add the env vars from `.env.example` in Settings -> Environment Variables.
 4. `vercel.json` registers two crons: order status sync (5 min) and service sync (6 h).
    Vercel Hobby only allows daily crons; use Pro, or call the cron URLs from cron-job.org / Upstash QStash
    with header `Authorization: Bearer <CRON_SECRET>`.
