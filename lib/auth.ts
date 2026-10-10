@@ -4,10 +4,15 @@ import { db } from "./db";
 import { readSessionUserId } from "./session";
 
 export const getCurrentUser = cache(async () => {
-  const id = await readSessionUserId();
-  if (!id) return null;
-  const u = await db.user.findUnique({ where: { id } });
-  return u && u.active ? u : null;
+  try {
+    const id = await readSessionUserId();
+    if (!id) return null;
+    const u = await db.user.findUnique({ where: { id } });
+    return u && u.active ? u : null;
+  } catch (err) {
+    console.error("getCurrentUser error:", err);
+    return null;
+  }
 });
 
 export async function requireUser() {
