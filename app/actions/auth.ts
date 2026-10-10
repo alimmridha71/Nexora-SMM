@@ -21,7 +21,6 @@ export async function registerAction(_: FormState, fd: FormData): Promise<FormSt
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Enter a valid email address" };
   if (password.length < 8) return { error: "Password must be at least 8 characters" };
   if (fd.get("terms") !== "on") return { error: "Accept the Terms to continue" };
-  let registered = false;
   try {
     if (await db.user.findUnique({ where: { email } })) return { error: "An account with this email already exists" };
 
@@ -29,16 +28,13 @@ export async function registerAction(_: FormState, fd: FormData): Promise<FormSt
       data: { name, email, passwordHash: await bcrypt.hash(password, 11), apiKey: randomBytes(24).toString("hex") },
     });
     await createSession(user.id);
-    registered = true;
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("Register action error:", msg);
     return { error: "Unable to create account. Please verify database connection." };
   }
 
-  if (registered) {
-    redirect("/dashboard");
-  }
+  redirect("/dashboard");
 }
 
 export async function loginAction(_: FormState, fd: FormData): Promise<FormState> {
@@ -46,7 +42,7 @@ export async function loginAction(_: FormState, fd: FormData): Promise<FormState
   const password = String(fd.get("password") ?? "");
 
   if (limited(`login:${ip()}:${email}`, 8)) return { error: "Too many attempts. Try again in a few minutes." };
-  let destination: string | null = null;
+  let destination = "/dashboard";
   try {
     const user = await db.user.findUnique({ where: { email } });
     const ok = user ? await bcrypt.compare(password, user.passwordHash) : false;
@@ -65,9 +61,7 @@ export async function loginAction(_: FormState, fd: FormData): Promise<FormState
     };
   }
 
-  if (destination) {
-    redirect(destination);
-  }
+  redirect(destination);
 }
 
 export async function logoutAction() {
