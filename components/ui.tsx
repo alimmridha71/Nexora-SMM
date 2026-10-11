@@ -24,16 +24,16 @@ export function Logo({
   const sizeClass = size === "lg" ? "h-11 w-11" : size === "sm" ? "h-7 w-7" : "h-9 w-9";
 
   return (
-    <span className="inline-flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-slate-900 group select-none">
+    <span className="inline-flex items-center gap-2 sm:gap-2.5 font-display text-base sm:text-lg font-bold tracking-tight text-slate-900 group select-none shrink-0">
       <img
         src="/logo.png"
-        alt={name}
+        alt={`${name} - Social Media Marketing Panel`}
         width={dims}
         height={dims}
-        className={`${sizeClass} rounded-xl object-contain shadow-xs border border-slate-200/90 group-hover:scale-105 transition-transform duration-200`}
+        className={`${sizeClass} rounded-xl object-contain shadow-xs border border-slate-200/90 group-hover:scale-105 transition-transform duration-200 shrink-0`}
       />
       {showText && (
-        <span className="text-slate-900 font-extrabold tracking-tight">
+        <span className="text-slate-900 font-extrabold tracking-tight whitespace-nowrap">
           {name}
         </span>
       )}

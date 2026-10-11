@@ -71,13 +71,23 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
+  applicationName: "Nexora SMM",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Nexora SMM",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#2563eb",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: "cover",
 };
 
 const jsonLd = {
